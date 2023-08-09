@@ -6,6 +6,8 @@ import { signInWithPopup } from 'firebase/auth'
 import Cookie from 'universal-cookie'
 import { errorMessage, successMessage } from '../../../core/helpers/message-api'
 import { redirect,  useNavigate, } from 'react-router-dom'
+import elipsAnimation from './../../../assets/lotties/elipses.json'
+import Lottie from 'react-lottie'
 
 const cookie = new Cookie()
 
@@ -13,6 +15,15 @@ const cookie = new Cookie()
 export const AuthPage = () => {
   const [messageApi, contextHolder] = message.useMessage()
   const navigate = useNavigate();
+
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: elipsAnimation,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice',
+    },
+  }
 
   const singInWithGoogle = async () => {
     try {
@@ -27,6 +38,11 @@ export const AuthPage = () => {
 
   return (
     <div className={style.wrapper}>
+      <Lottie style={{
+        position: 'fixed',
+
+      }} 
+      options={defaultOptions} height={1000} width={1000}/>
       {contextHolder}
       <div className={style.container}>
         <p className={style.title}>Sing in to continue</p>

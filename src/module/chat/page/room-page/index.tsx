@@ -4,6 +4,7 @@ import { useRef, useState } from 'react'
 import style from './style.module.css'
 import Lottie from 'react-lottie'
 import chatAnimation from './../../../../assets/lotties/chat.json'
+import elipseAnimation from './../../../../assets/lotties/elipses.json'
 import Cookies from 'universal-cookie'
 import  useNavigation  from "react-router-dom";
 import { Link } from 'react-router-dom'
@@ -12,16 +13,28 @@ export const RoomPage = () => {
   const [inputValue, setInputValue] = useState<string>('')
   const cookie = new Cookies()
 
-  const defaultOptions = {
+  const chatOption = {
     loop: true,
     autoplay: true,
-    animationData: chatAnimation,
+    animationData: chatAnimation, 
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice',
+    },
+  }
+  const elipsOption = {
+    loop: true,
+    autoplay: true,
+    animationData: elipseAnimation, 
     rendererSettings: {
       preserveAspectRatio: 'xMidYMid slice',
     },
   }
   return (
     <div className={style.wrapper}>
+      <Lottie options={elipsOption} style={{
+        position: 'fixed',
+
+      }}  height={1000} width={1500} />
       <div className={style.container}>
         <Input
           size="large"
@@ -29,7 +42,7 @@ export const RoomPage = () => {
           placeholder="Enter chat room"
           prefix={<TeamOutlined />}
         />
-        <Lottie options={defaultOptions} height={250} width={330} />
+        <Lottie options={chatOption} height={250} width={330} />
         <Button size="large" type="primary" onClick={() => console.log(inputValue)}>
           Submit
         </Button>
