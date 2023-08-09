@@ -7,7 +7,7 @@ import { RoomPage } from './module/chat/page/room-page'
 const cookie = new Cookie()
 function App() {
   const [isLogin, setIsLogin] = useState<boolean>(cookie.get('auth-token'))
-  const [room, setRoom] = useState(null)
+  const [room, setRoom] = useState<string | null>(null)
   // useEffect(() => {
     
   // }, [cookie])
@@ -20,7 +20,7 @@ function App() {
     )
   }
 
-  return <div> {room ? <ChatPage/> : <RoomPage/>} </div>
+  return <div> {room ? <ChatPage/> : <RoomPage setRoom={setRoom} />} </div>
 }
 
 export default App

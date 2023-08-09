@@ -1,0 +1,11 @@
+.wrapper{
+   border-top: 1px solid  #0006b558;
+   padding: 10px 0;
+   display: flex;
+}
+
+.buttonContainer{
+    display: grid;
+    place-items: center;
+    margin-right: 10px;
+}

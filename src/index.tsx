@@ -17,10 +17,10 @@ const router = createBrowserRouter([
     path: '/auth',
     element: <AuthPage />,
   },
-  {
-    path: '/room',
-    element: <RoomPage />,
-  },
+  // {
+  //   path: '/room',
+  //   element: <RoomPage />,
+  // },
 ])
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)

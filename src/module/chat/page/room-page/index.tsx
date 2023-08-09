@@ -6,17 +6,21 @@ import Lottie from 'react-lottie'
 import chatAnimation from './../../../../assets/lotties/chat.json'
 import elipseAnimation from './../../../../assets/lotties/elipses.json'
 import Cookies from 'universal-cookie'
-import  useNavigation  from "react-router-dom";
+import useNavigation from 'react-router-dom'
 import { Link } from 'react-router-dom'
 
-export const RoomPage = () => {
+interface IProps {
+  setRoom: (value: string) => void
+}
+
+export const RoomPage = ({ setRoom }: IProps) => {
   const [inputValue, setInputValue] = useState<string>('')
   const cookie = new Cookies()
 
   const chatOption = {
     loop: true,
     autoplay: true,
-    animationData: chatAnimation, 
+    animationData: chatAnimation,
     rendererSettings: {
       preserveAspectRatio: 'xMidYMid slice',
     },
@@ -24,17 +28,21 @@ export const RoomPage = () => {
   const elipsOption = {
     loop: true,
     autoplay: true,
-    animationData: elipseAnimation, 
+    animationData: elipseAnimation,
     rendererSettings: {
       preserveAspectRatio: 'xMidYMid slice',
     },
   }
   return (
     <div className={style.wrapper}>
-      <Lottie options={elipsOption} style={{
-        position: 'fixed',
-
-      }}  height={1000} width={1500} />
+      <Lottie
+        options={elipsOption}
+        style={{
+          position: 'fixed',
+        }}
+        height={1000}
+        width={1500}
+      />
       <div className={style.container}>
         <Input
           size="large"
@@ -43,14 +51,19 @@ export const RoomPage = () => {
           prefix={<TeamOutlined />}
         />
         <Lottie options={chatOption} height={250} width={330} />
-        <Button size="large" type="primary" onClick={() => console.log(inputValue)}>
+        <Button size="large" type="primary" onClick={() => setRoom(inputValue)}>
           Submit
         </Button>
-        <Link className={style.link} to='/auth'  onClick={() => {cookie.set('auth-token', null)} }>
-            Log out
+        <Link
+          className={style.link}
+          to="/auth"
+          onClick={() => {
+            cookie.set('auth-token', null)
+          }}
+        >
+          Log out
         </Link>
       </div>
     </div>
   )
 }
-

@@ -1,0 +1,26 @@
+.wrapper{
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+}
+
+.container{
+    width: 400px;
+    height: 700px;
+    box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
+    border: 1px solid #0006b558;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.chatHeader{
+    padding: 20px 20px;
+    font-weight: 600;
+    color: #0d0d0d;
+    border-bottom: 1px solid #0006b558;
+    box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
+}
