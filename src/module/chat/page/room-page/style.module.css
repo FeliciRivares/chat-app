@@ -1,0 +1,23 @@
+.wrapper{
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid #dedede;
+    border-radius: 20px;
+    width: 400px;
+    height: 400px;
+    padding: 30px;
+    text-align: center;
+}
+.link {
+    font-size: 12px;
+    padding-top: 10px;
+}
+

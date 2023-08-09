@@ -1,26 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from 'react'
+import { AuthPage } from './module/auth/page'
+import Cookie from 'universal-cookie'
+import { ChatPage } from './module/chat/page/chat-page'
+import { RoomPage } from './module/chat/page/room-page'
 
+const cookie = new Cookie()
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const [isLogin, setIsLogin] = useState<boolean>(cookie.get('auth-token'))
+  const [room, setRoom] = useState(null)
+  // useEffect(() => {
+    
+  // }, [cookie])
+
+  if (!isLogin) {
+    return (
+      <div>
+        <AuthPage />
+      </div>
+    )
+  }
+
+  return <div> {room ? <ChatPage/> : <RoomPage/>} </div>
 }
 
-export default App;
+export default App
